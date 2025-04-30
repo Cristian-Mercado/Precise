@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Precise Barbershop</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Slideshow Section -->
+    <div class="slideshow-container">
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="team.html">Team</a></li>
+          <li class="nav-item"><a href="services.html">Services</a></li>
+        </ul>
+      </nav>
+
+      <div class="slide active">
+        <img src="images/image6.png" alt="Slide 1" />
+      </div>
+      <div class="slide">
+        <img src="images/image7.png" alt="Slide 2" />
+      </div>
+      <div class="slide">
+        <img src="images/image8.png" alt="Slide 3" />
+      </div>
+      <div class="slide">
+        <img src="images/image9.png" alt="Slide 4" />
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+      <h1>Welcome to Precise</h1>
+      <h2>About Us</h2>
+      <p>
+        At Precise, we believe a great haircut should be more than just a trim —
+        it should be a moment of confidence. Our space is designed to be modern,
+        relaxing, and rooted in tradition. You’ll leave looking sharp and
+        feeling even better.
+      </p>
+      <p>
+        <strong>Location:</strong><br />
+        7520 University Hills Blvd, Dallas, TX 75241<br />
+        <strong>Phone:</strong> (214) 555-1234<br />
+        <strong>Email:</strong> cristianmercado@gmail.com
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2025 Precise Barbershop. All rights reserved. <br />
+      Site developed by <a href="#">@Cristian Mercado</a>.
+    </footer>
+
+    <!-- Book Now Button -->
+    <button class="book-now" onclick="window.location.href='services.html'">
+      Book Now
+    </button>
+
+    <!-- JS: Slideshow + Scroll Animation -->
+    <script>
+      // Slideshow
+      let slideIndex = 0;
+      const slides = document.getElementsByClassName("slide");
+      function showSlides() {
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].classList.remove("active");
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) slideIndex = 1;
+        slides[slideIndex - 1].classList.add("active");
+        setTimeout(showSlides, 4000);
+      }
+      showSlides();
+
+      // Fade-in scroll animation for .container
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      const container = document.querySelector(".container");
+      if (container) observer.observe(container);
+    </script>
+  </body>
+</html>
